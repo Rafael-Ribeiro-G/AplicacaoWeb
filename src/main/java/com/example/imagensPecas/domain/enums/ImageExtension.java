@@ -2,23 +2,17 @@ package com.example.imagensPecas.domain.enums;
 
 import org.springframework.http.MediaType;
 
-import java.util.Arrays;
-
 public enum ImageExtension {
-    PNG(MediaType.IMAGE_PNG),
-    JPG(MediaType.IMAGE_JPEG),
-    GIF(MediaType.IMAGE_GIF);
+    PNG,
+    GIF,
+    JPEG;
 
-    private final MediaType mediaType;
-
-    ImageExtension(MediaType mediaType) {
-        this.mediaType = mediaType;
-    }
-
-    public static ImageExtension values(MediaType mediaType){
-        return Arrays.stream(values())
-                .filter(ie -> ie.mediaType.equals(mediaType))
-                .findFirst()
-                .orElse(null);
+    // Esse é o método que o seu professor criou no Enum para aceitar MediaType!
+    public static ImageExtension valueOf(MediaType mediaType) {
+        if (mediaType == null) {
+            return null;
+        }
+        String subtype = mediaType.getSubtype().toUpperCase();
+        return ImageExtension.valueOf(subtype);
     }
 }

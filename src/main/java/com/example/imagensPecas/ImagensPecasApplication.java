@@ -14,9 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class ImagensPecasApplication{
 
-    public static void main(String[] args) { SpringApplication.run(ImagensPecasApplication.class, args);
-    };
-
+    /*
     @Bean
     public CommandLineRunner commandLineRunner (@Autowired ImageRepository repository) {
         return args -> {
@@ -28,5 +26,10 @@ public class ImagensPecasApplication{
                     .build();
             repository.save(image);
         };
+    }
+    */
+
+    public static void main (String[] args) {
+        SpringApplication.run(ImagensPecasApplication.class, args);
     }
 }

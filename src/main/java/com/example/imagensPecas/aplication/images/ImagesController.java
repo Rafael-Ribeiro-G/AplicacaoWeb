@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v1/images")
@@ -53,12 +55,31 @@ public class ImagesController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(image.getExtension().getMediaType());
         headers.setContentLength(image.getSize());
-        headers.setContentDispositionFormData("", image.getName().concat("").concat(image.getExtension().name()));
+        headers.setContentDispositionFormData("inline; filename = \"" + image.getName() + "\"",image.getFileName());
+        return new ResponseEntity<>(image.getFile(), headers, HttpStatus.OK);
     }
 
     //localhost:8080/v1/images/id_da_imagem
     private URI buildImageURI(Image image){
         String imagePath = "/" + image.getId();
-        return ServletUriComponentsBuilder.fromCurrentRequest().path(imagePath).build().toUri();
+        //Retorna apenas a URI
+        return ServletUriComponentsBuilder.fromCurrentRequestUri().path(imagePath).build().toUri();
+    }
+
+    //localhost:8080/v1/images?extension=PNG&quey=Nature
+    //@GetMapping sem nenhum parâmetro mapeia para a raiz do controller, os parâmetros não vão fazer parte da URL em si
+    @GetMapping
+    public ResponseEntity<List<ImageDTO>> search(
+            //Informa que esse parâmetro deve ser retirado da query string URL
+            @RequestParam(value = "extension", required = false, defaultValue = "") String extension,
+            @RequestParam(value = "query", required = false) String query){
+
+        //Valores ausentes ou vazio resultam em NULL
+        var result = service.search(ImageExtension.ofName(extension), query);
+        var images = result.stream().map(image -> {
+            var url = buildImageURI(image);
+            return mapper.imageDTO(image,url.toString());
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(images);
     }
 }

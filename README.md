@@ -18,30 +18,7 @@ Maven (Gerenciador de dependências)
 
 O projeto está organizado em pacotes que respeitam princípios de arquitetura limpa:
 
-com.example.imagensPecas/
-│
-├── aplication/
-│   └── images/
-│       ├── ImageDTO.java
-│       ├── ImageMapper.java
-│       ├── ImageServiceImpl.java
-│       └── ImagesController.java
-│
-├── domain/
-│   ├── entity/
-│   │   └── Image.java
-│   ├── enums/
-│   │   └── ImageExtension.java
-│   └── service/
-│       └── ImageService.java
-│
-└── infra/
-    └── repository/
-        ├── ImageRepository.java
-        └── specs/
-            ├── GenericSpecs.java
-            └── ImageSpecs.java
-
+'''
 com.example.imagensPecas/
 ├── aplication/
 │   └── images/
@@ -62,7 +39,6 @@ com.example.imagensPecas/
         └── specs/
             ├── GenericSpecs.java
             └── ImageSpecs.java
-
 
 # ⚙️ Pré-requisitos
 

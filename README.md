@@ -18,10 +18,7 @@ Maven (Gerenciador de dependências)
 
 O projeto está organizado em pacotes que respeitam princípios de arquitetura limpa:
 
-com.example.imagensPecas/
-|---aplication/
-
-
+```text
 com.example.imagensPecas/
 ├── aplication/
 │   └── images/
@@ -42,6 +39,7 @@ com.example.imagensPecas/
         └── specs/
             ├── GenericSpecs.java
             └── ImageSpecs.java
+```
 
 # ⚙️ Pré-requisitos
 
@@ -55,47 +53,53 @@ Docker e Docker Compose (caso deseje rodar os serviços via container utilizando
 
 1. Clonar o repositório e acessar a pasta da aplicação
 
+```text
 cd AplicacaoWeb-main
-
+```
 
 2. Subir os serviços com Docker (se aplicável)
 
 O projeto conta com um arquivo docker-compose.yml na raiz para facilitar a inicialização de dependências de infraestrutura:
 
+```text
 docker-compose up -d
-
+```
 
 3. Executar a aplicação usando o Maven Wrapper
 
 No Linux/macOS:
 
+```text
 ./mvnw clean spring-boot:run
-
+```
 
 No Windows (Prompt de Comando ou PowerShell):
 
+```text
 mvnw.cmd clean spring-boot:run
-
+```
 
 # 🧪 Testes
 
 Para executar os testes automatizados da aplicação, utilize o comando:
 
 ## Linux/macOS
+```text
 ./mvnw test
-
+```
 ## Windows
+```text
 mvnw.cmd test
-
+```
 
 # 📄 Contribuindo
 
 Faça um Fork do projeto
 
-Crie uma Branch para sua Feature (git checkout -b feature/NovaFeature)
+Crie uma Branch para sua Feature (```git checkout -b feature/NovaFeature```)
 
-Faça o Commit de suas alterações (git commit -m 'Adicionando nova feature')
+Faça o Commit de suas alterações (```git commit -m 'Adicionando nova feature'```)
 
-Faça o Push para a Branch (git push origin feature/NovaFeature)
+Faça o Push para a Branch (```git push origin feature/NovaFeature```)
 
 Abra um Pull Request

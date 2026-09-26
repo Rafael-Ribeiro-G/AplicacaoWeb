@@ -14,7 +14,7 @@ Docker & Docker Compose (para orquestração de serviços auxiliares)
 
 Maven (Gerenciador de dependências)
 
-📁 Estrutura do Projeto
+# 📁 Estrutura do Projeto
 
 O projeto está organizado em pacotes que respeitam princípios de arquitetura limpa:
 
@@ -35,6 +35,27 @@ com.example.imagensPecas/
 │   └── service/
 │       └── ImageService.java
 │
+└── infra/
+    └── repository/
+        ├── ImageRepository.java
+        └── specs/
+            ├── GenericSpecs.java
+            └── ImageSpecs.java
+
+com.example.imagensPecas/
+├── aplication/
+│   └── images/
+│       ├── ImageDTO.java
+│       ├── ImageMapper.java
+│       ├── ImageServiceImpl.java
+│       └── ImagesController.java
+├── domain/
+│   ├── entity/
+│   │   └── Image.java
+│   ├── enums/
+│   │   └── ImageExtension.java
+│   └── service/
+│       └── ImageService.java
 └── infra/
     └── repository/
         ├── ImageRepository.java

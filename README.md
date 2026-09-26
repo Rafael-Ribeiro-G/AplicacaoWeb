@@ -18,7 +18,10 @@ Maven (Gerenciador de dependências)
 
 O projeto está organizado em pacotes que respeitam princípios de arquitetura limpa:
 
-'''
+com.example.imagensPecas/
+|---aplication/
+
+
 com.example.imagensPecas/
 ├── aplication/
 │   └── images/
